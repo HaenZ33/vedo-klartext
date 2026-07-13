@@ -5,6 +5,8 @@ Firmware-Paket zum Flashen auf das ESP32-P4-Ultra Display-Board.
 
 **Version:** 1.1 (Beta) · **Stand:** 13.07.2026
 
+Was in dieser Version neu ist, steht im [CHANGELOG.md](CHANGELOG.md).
+
 ## Was ist drin?
 
 | Datei | Zweck |
@@ -14,6 +16,7 @@ Firmware-Paket zum Flashen auf das ESP32-P4-Ultra Display-Board.
 | `vedo_klartext_v1.1.bin` | Die eigentliche Firmware (Display, Logik, UI) |
 | `flash_download_tool.zip` | Das offizielle Flash-Programm von Espressif |
 | `README.md` | Diese Anleitung |
+| `CHANGELOG.md` | Was sich von Version zu Version geändert hat |
 
 ## Was du brauchst
 
