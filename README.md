@@ -16,6 +16,7 @@ Was in dieser Version neu ist, steht im [CHANGELOG.md](CHANGELOG.md).
 | `vedo_klartext_v1.1.bin` | Die eigentliche Firmware (Display, Logik, UI) |
 | `flash_download_tool.zip` | Das offizielle Flash-Programm von Espressif |
 | `README.md` | Diese Anleitung |
+| `MENU.md` | Übersicht über alle Menüpunkte und ihre Bedeutung |
 | `CHANGELOG.md` | Was sich von Version zu Version geändert hat |
 
 ## Was du brauchst
