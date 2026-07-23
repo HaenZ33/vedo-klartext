@@ -5,6 +5,31 @@ Die aktuell installierte Version steht im Boot-Screen und unten im Menü.
 
 ---
 
+## v1.1.1 (Beta) – 23.07.2026
+
+Kleines Patch-Update. Schwerpunkt: schnellerer und stabilerer GPS-Fix.
+
+### Verbessert
+
+**GPS / Uhrzeit**
+- **Uhrzeit ist sofort da:** Die Zeit vom GPS wird direkt beim Empfang
+  in die interne Uhr (RTC) übernommen – kein Warten mehr auf den vollen
+  Positions-Fix.
+- **Schnellerer Fix nach dem Einschalten:** GNSS-„EASY“ aktiviert
+  (der Empfänger merkt sich Bahndaten und findet dadurch nach dem Aufwachen
+  deutlich schneller wieder Satelliten).
+- Zusätzliche Zeit-Nachricht (ZDA) für eine sauberere Uhrzeit-Auswertung.
+- Aufwach- und Fix-Ablauf (Wake/TTFF) intern überarbeitet.
+
+### Hinweise
+
+- Firmware-Datei heißt jetzt `vedo_klartext_v1.1.1.bin`. Flash-Adressen
+  unverändert – siehe [README.md](README.md).
+- Nach dem Flashen im Boot-Screen prüfen, ob dort **v1.1.1** steht.
+- Status weiterhin **Beta**.
+
+---
+
 ## v1.1 (Beta) – 13.07.2026
 
 Großes Funktions-Update gegenüber der ersten Version vom April.
