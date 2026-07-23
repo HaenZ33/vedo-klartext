@@ -7,7 +7,19 @@ Die aktuell installierte Version steht im Boot-Screen und unten im Menü.
 
 ## v1.1.1 (Beta) – 23.07.2026
 
-Kleines Patch-Update. Schwerpunkt: schnellerer und stabilerer GPS-Fix.
+Patch-Update. Schwerpunkte: zweites GPS-Modul wählbar, schnellerer GPS-Fix,
+verbesserter Needle-Sweep.
+
+### Neu
+
+**Zweites GPS-Modul wählbar**
+- Neben dem bisherigen **LC76G** wird jetzt auch das **SR1612U10**
+  (u-blox M10) unterstützt.
+- Auswahl im Menü unter **SETTINGS → „GNSS Modul"**; die Wahl wird
+  gespeichert und beim nächsten Start automatisch verwendet.
+
+**Geschwindigkeits-Ausgang (VSS)**
+- Neuer VSS-Ausgang zur Weitergabe des Tachosignals.
 
 ### Verbessert
 
@@ -20,6 +32,11 @@ Kleines Patch-Update. Schwerpunkt: schnellerer und stabilerer GPS-Fix.
   deutlich schneller wieder Satelliten).
 - Zusätzliche Zeit-Nachricht (ZDA) für eine sauberere Uhrzeit-Auswertung.
 - Aufwach- und Fix-Ablauf (Wake/TTFF) intern überarbeitet.
+
+**Anzeige**
+- **Needle-Sweep verbessert:** Der Zeiger-Sweep beim Start läuft nur noch
+  bei **stehendem Motor**. Läuft der Motor schon, zeigen die Zeiger sofort
+  die echten Werte (kein kurzes „Wegzappeln" mehr).
 
 ### Hinweise
 
