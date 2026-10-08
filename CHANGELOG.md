@@ -5,6 +5,46 @@ Die aktuell installierte Version steht im Boot-Screen und unten im Menü.
 
 ---
 
+## v1.3.6 (Beta) – 08.10.2026
+
+**Das Tempomat-Signal lässt sich jetzt anpassen.** Zwei neue Einstellungen
+helfen, wenn das Steuergerät mit dem Geschwindigkeitssignal nichts anfangen kann.
+
+---
+
+### Neu
+
+**Pulsform und Polarität für den Tempomat-Ausgang** – *Einstellungen → Tempomat*
+- **Pulsform:** bisher war das Signal immer ein gleichmäßiges Rechteck (50 %).
+  Jetzt stehen zusätzlich 25 %, 75 % sowie kurze Pulse fester Länge (1 ms oder
+  2 ms) zur Auswahl. Die Frequenz – und damit die Geschwindigkeit, die das
+  Steuergerät sieht – bleibt dabei gleich.
+- **Polarität:** *Normal* oder *Invertiert*. Invertiert dreht das Signal um:
+  im Stand liegt die Leitung dann auf Masse statt auf High.
+- **Standard bleibt 50 % / Normal – nur ändern, wenn der Tempomat das Signal
+  nicht annimmt.** Wer nichts verstellt, merkt von der neuen Version nichts.
+
+### Behoben
+
+**Tempomat-Signal beim Anfahren**
+- Beim Wiederanfahren nach einem Halt startet der Ausgang jetzt immer sauber
+  von vorn. Vorher konnte er – je nach Moment des Anhaltens – unter Umständen
+  verzögert wieder anlaufen. Vorsorglich abgestellt; aufgefallen war es im
+  Betrieb nicht.
+
+### Hinweise
+
+- **Diese Version kommt normal über die SD-Karte.** Nimm
+  `vedo_klartext_v1.3.6.bin` – kommst du von **1.3.4 oder älter**, nimm
+  `vedo_klartext.bin` ohne Versionsnummer. Ältere Firmware kennt nur diesen
+  Namen. Der Ablauf steht in der
+  [README.md](https://github.com/HaenZ33/vedo-klartext/blob/v1.3.6/README.md).
+- Die [MENU.md](https://github.com/HaenZ33/vedo-klartext/blob/v1.3.6/MENU.md)
+  ist auf diesen Stand nachgezogen.
+- Alle Einstellungen und der Kilometerstand bleiben beim Update erhalten.
+
+---
+
 ## v1.3.5 (Beta) – 07.09.2026
 
 **Der Tacho zeigte zu langsam – das ist behoben.** Dazu: die Werteblocks gibt es

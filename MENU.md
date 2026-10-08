@@ -1,6 +1,6 @@
 # Das Bedien-Menü
 
-Übersicht über alle Menüpunkte der Firmware **v1.3.5 (Beta)**.
+Übersicht über alle Menüpunkte der Firmware **v1.3.6 (Beta)**.
 
 Bedient wird alles über den **Dreh-Encoder**.
 
@@ -63,7 +63,7 @@ flowchart LR
     ENE --> E1["Standby nach · Schlaf nach<br/>Tiefschlaf nach · Notweckung<br/>Tiefschlaf jetzt"]
     TAN --> T1["Tankgröße · Kennlinie<br/>Auslitern · Zurücksetzen"]
     REI --> RE1["Breite · Querschnitt · Felge<br/>Offset · Umfang"]
-    TMP --> TM1["Signalausgang · Impulse/m<br/>Im Simulator · Frequenz"]
+    TMP --> TM1["Signalausgang · Impulse/m<br/>Pulsform · Polarität<br/>Im Simulator · Frequenz"]
 
     SYS --> Y1["FPS Anzeige · Run Demo<br/>Display kalibrieren<br/>Panel-Refresh"]
     SYS --> STE["<b>Self-Test</b>"]
@@ -306,8 +306,13 @@ Der Geschwindigkeits-Ausgang zum Steuergerät (VSS).
 |---|---|
 | **Signalausgang** | Hauptschalter. Aus = am Ausgang passiert nichts |
 | **Impulse/m** | Kennwert des Steuergeräts: 1 · 2 · **4** · 6 · 8 · 16, zusätzlich als `/km` angezeigt |
+| **Pulsform** | **Neu ab v1.3.6** – Form des Signals: **50 %** · 25 % · 75 % · 1 ms · 2 ms. Ändert nur die Form, nicht die Frequenz |
+| **Polarität** | **Neu ab v1.3.6** – **Normal** / Invertiert: dreht das Signal um (im Stand High oder Low) |
 | **Im Simulator** | Darf die Demo den Ausgang treiben? Aus = am Schreibtisch bleibt er still |
 | **Frequenz** | Nur Anzeige: was **wirklich** am Ausgang anliegt. `---` = es geht nichts raus |
+
+> **Pulsform und Polarität sind zur Fehlersuche gedacht.** Standard bleibt
+> 50 % / Normal – nur ändern, wenn der Tempomat das Signal nicht annimmt.
 
 Die Frequenzzeile ist der gemessene Wert, nicht der gerechnete – damit lässt
 sich der Ausgang ohne Messgerät prüfen.
