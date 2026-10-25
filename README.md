@@ -17,7 +17,6 @@ und liegen zusätzlich hier im Ordner.
 | Datei | Zweck |
 |---|---|
 | `vedo_klartext_v1.3.8.bin` | Die Firmware – **das ist die Datei für die SD-Karte** |
-| `vedo_klartext.bin` | Dieselbe Firmware ohne Versionsnummer im Namen – nur noch nötig, wenn auf deinem Gerät 1.3.4 oder älter läuft (siehe unten) |
 | `bootloader.bin` | Startet den Chip – nur für den Weg über das Flash-Tool |
 | `partition-table.bin` | Sagt dem Chip, wo was im Speicher liegt – nur fürs Flash-Tool |
 | `otadata.bin` | Merkt sich, welche Firmware gestartet wird – nur fürs Flash-Tool |
@@ -138,22 +137,22 @@ nur um eine neue Firmware aufzuspielen, entfällt ab dieser Version.
    **mit** Versionsnummer im Namen. So siehst du der Karte später an, welcher
    Stand darauf liegt, ohne das Cluster einzuschalten.
 
-   > **Läuft auf deinem Cluster noch 1.3.4 oder älter?** Dann nimm stattdessen
-   > **`vedo_klartext.bin`** – die Datei ohne Versionsnummer. Ältere Firmware
-   > sucht ausschließlich nach genau diesem Namen und würde die versionierte
-   > Datei nicht finden. Deshalb liegen beide dem Release bei. Welche Version
-   > gerade läuft, steht im Boot-Screen und unten im Menü.
+   > **Läuft auf deinem Cluster noch 1.3.4 oder älter?** Dann benenne die Datei
+   > nach dem Download in **`vedo_klartext.bin`** um – ohne Versionsnummer.
+   > Ältere Firmware sucht ausschließlich nach genau diesem Namen und würde die
+   > versionierte Datei nicht finden. Welche Version gerade läuft, steht im
+   > Boot-Screen und unten im Menü.
 
-   > **Immer nur eine der beiden Dateien auf die Karte legen.** Liegen beide
-   > darauf, sind sie für das Cluster zwei gleichwertige Kandidaten mit
-   > derselben Version. Kann es sie nicht anhand des Kopierdatums
-   > unterscheiden, tut es lieber nichts, statt zu raten – dann passiert beim
-   > Einschalten einfach kein Update.
+   > **Immer nur eine Firmware-Datei auf die Karte legen.** Liegen zwei mit
+   > derselben Version darauf, sind sie für das Cluster gleichwertige
+   > Kandidaten. Kann es sie nicht anhand des Kopierdatums unterscheiden, tut
+   > es lieber nichts, statt zu raten – dann passiert beim Einschalten einfach
+   > kein Update.
 2. Die Datei auf die SD-Karte kopieren, direkt in den Hauptordner
-   (ein Unterordner `update` geht auch). **Umbenennen ist nicht nötig** – und
-   es bringt auch nichts: welche Version in einer Datei steckt, liest das
-   Cluster aus der Datei selbst, nicht aus dem Namen. Eine alte Firmware in
-   `vedo_klartext_v9.9.9.bin` umzubenennen ändert daran nichts.
+   (ein Unterordner `update` geht auch). **Umbenennen ist ab 1.3.5 nicht
+   nötig** – und es bringt auch nichts: welche Version in einer Datei steckt,
+   liest das Cluster aus der Datei selbst, nicht aus dem Namen. Eine alte
+   Firmware in `vedo_klartext_v9.9.9.bin` umzubenennen ändert daran nichts.
 3. Karte ins Cluster stecken, Zündung an.
 4. Das Cluster meldet sich von selbst: es zeigt, welche Version auf der Karte
    liegt und welche gerade läuft, und zählt zehn Sekunden herunter.

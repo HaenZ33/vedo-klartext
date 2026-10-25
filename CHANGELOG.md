@@ -42,9 +42,9 @@ wenn wirklich zu viel Druck anliegt.
 ### Hinweise
 
 - **Diese Version kommt normal über die SD-Karte.** Nimm
-  `vedo_klartext_v1.3.8.bin` – kommst du von **1.3.4 oder älter**, nimm
-  `vedo_klartext.bin` ohne Versionsnummer. Ältere Firmware kennt nur diesen
-  Namen. Der Ablauf steht in der
+  `vedo_klartext_v1.3.8.bin` – kommst du von **1.3.4 oder älter**, benenne sie
+  vorher in `vedo_klartext.bin` um. Ältere Firmware kennt nur diesen Namen.
+  Eine eigene Datei ohne Versionsnummer liegt dem Release nicht mehr bei. Der Ablauf steht in der
   [README.md](https://github.com/HaenZ33/vedo-klartext/blob/v1.3.8/README.md).
 - Die [MENU.md](https://github.com/HaenZ33/vedo-klartext/blob/v1.3.8/MENU.md)
   ist auf diesen Stand nachgezogen.
