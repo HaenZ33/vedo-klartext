@@ -1,6 +1,6 @@
 # Das Bedien-Menü
 
-Übersicht über alle Menüpunkte der Firmware **v1.3.6 (Beta)**.
+Übersicht über alle Menüpunkte der Firmware **v1.3.8 (Beta)**.
 
 Bedient wird alles über den **Dreh-Encoder**.
 
@@ -100,9 +100,9 @@ bist. **Die Liste ändert sich also je nach Screen.**
 | **Screen 1** | Drehzahl Zeiger · Geschwindigkeit · Temp links · Temp rechts · Uhrzeit · Ladedruck |
 | **Screen 3** | Drehzahl Zeiger · Drehzahl Bogen · Speed · Temp links · Temp rechts · Ladedruck · Ladeluft Temp · Tageskilometerzähler · Uhrzeit |
 
-> **Screen 2 gibt es seit v1.2.0 nicht mehr.** Er war im Kern ein Screen 1 mit
-> Tacho und Ladedruck – beides sitzt jetzt auf Screen 1. Der Zyklus geht also
-> Screen 1 → Screen 3 → Debug.
+> **Screen 2** ist ab v1.3.8 eine Drehzahl-Drehscheibe ohne eigene Menüpunkte.
+> Er erscheint nur, wenn seine Bilddateien auf der SD-Karte liegen. Ohne sie
+> geht der Zyklus wie bisher Screen 1 → Screen 3 → Debug.
 
 > **Kühlwasser- und Tankzeiger stehen nicht mehr in der Liste.** Sie sind
 > Pflichtanzeigen und werden immer angezeigt.

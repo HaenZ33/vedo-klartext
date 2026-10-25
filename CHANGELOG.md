@@ -5,6 +5,53 @@ Die aktuell installierte Version steht im Boot-Screen und unten im Menü.
 
 ---
 
+## v1.3.8 (Beta) – 25.10.2026
+
+**Die Ladedruck-Anzeige warnt nicht mehr zu früh.** Der Zeiger auf Screen 1
+darf jetzt ein Stück über 1 bar hinaus, und die Warnungen kommen erst dann,
+wenn wirklich zu viel Druck anliegt.
+
+> Die Version 1.3.7 hat es hier nie gegeben – sie wurde gebaut, aber nicht
+> veröffentlicht. Alles daraus steckt in dieser Version.
+
+---
+
+### Geändert
+
+**Ladedruck-Anzeige**
+- **Screen 1:** Der Zeiger blieb bisher bei 1 bar stehen. Jetzt läuft er ein
+  kleines Stück darüber hinaus (bis etwa 1,1 bar), damit man sieht, wenn der
+  Druck über der 1-bar-Marke liegt. Die Marke selbst sitzt an der alten Stelle.
+- **Screen 3:** Der Druck-Bogen geht wie bisher bis 1 bar.
+
+**Ladedruck-Warnungen**
+- **„Ladedruck hoch"** kommt jetzt erst ab **1,5 bar** (bisher 0,7 bar).
+- **Sensorfehler** wegen zu hohem Ladedruck kommt erst ab **2 bar** (bisher 1,1 bar).
+  So hohe Werte sind bei diesem Motor nicht plausibel und deuten eher auf einen
+  defekten Geber hin.
+- Das Warnsymbol und der Hinweistext für den Ladedruck erscheinen jetzt schon
+  bei „Ladedruck hoch". Bisher kamen sie erst zusammen mit dem Sensorfehler.
+
+### Neu
+
+**Screen 2 ist vorbereitet** – eine Drehscheibe, die sich mit der Drehzahl dreht.
+- Er erscheint nur, wenn seine Bilddateien auf der SD-Karte liegen. Die gehören
+  noch nicht zu diesem Release. **Ohne sie ändert sich nichts:** Der Wechsel
+  geht wie bisher Screen 1 → Screen 3 → Debug.
+
+### Hinweise
+
+- **Diese Version kommt normal über die SD-Karte.** Nimm
+  `vedo_klartext_v1.3.8.bin` – kommst du von **1.3.4 oder älter**, nimm
+  `vedo_klartext.bin` ohne Versionsnummer. Ältere Firmware kennt nur diesen
+  Namen. Der Ablauf steht in der
+  [README.md](https://github.com/HaenZ33/vedo-klartext/blob/v1.3.8/README.md).
+- Die [MENU.md](https://github.com/HaenZ33/vedo-klartext/blob/v1.3.8/MENU.md)
+  ist auf diesen Stand nachgezogen.
+- Alle Einstellungen und der Kilometerstand bleiben beim Update erhalten.
+
+---
+
 ## v1.3.6 (Beta) – 08.10.2026
 
 **Das Tempomat-Signal lässt sich jetzt anpassen.** Zwei neue Einstellungen

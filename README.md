@@ -3,7 +3,7 @@
 Digitales Kombiinstrument für den VW T3.
 Firmware-Paket zum Flashen auf das ESP32-P4-Ultra Display-Board.
 
-**Version:** 1.3.6 (Beta) · **Stand:** 08.10.2026
+**Version:** 1.3.8 (Beta) · **Stand:** 25.10.2026
 
 ➡ **[Neueste Version herunterladen](https://github.com/HaenZ33/vedo-klartext/releases/latest)**
 
@@ -16,7 +16,7 @@ und liegen zusätzlich hier im Ordner.
 
 | Datei | Zweck |
 |---|---|
-| `vedo_klartext_v1.3.6.bin` | Die Firmware – **das ist die Datei für die SD-Karte** |
+| `vedo_klartext_v1.3.8.bin` | Die Firmware – **das ist die Datei für die SD-Karte** |
 | `vedo_klartext.bin` | Dieselbe Firmware ohne Versionsnummer im Namen – nur noch nötig, wenn auf deinem Gerät 1.3.4 oder älter läuft (siehe unten) |
 | `bootloader.bin` | Startet den Chip – nur für den Weg über das Flash-Tool |
 | `partition-table.bin` | Sagt dem Chip, wo was im Speicher liegt – nur fürs Flash-Tool |
@@ -30,7 +30,7 @@ mehr hier im Ordner – es ist 24 MB groß und ändert sich nie. Wer nur über d
 SD-Karte aktualisiert, braucht es ohnehin nicht.
 
 > **Der schnelle Weg:** Läuft auf deinem Cluster schon 1.3.0 oder neuer, brauchst
-> du von alldem **nur eine einzige Datei** – `vedo_klartext_v1.3.6.bin` auf die
+> du von alldem **nur eine einzige Datei** – `vedo_klartext_v1.3.8.bin` auf die
 > SD-Karte, Karte rein, Zündung an. Der Abschnitt
 > [Update über die SD-Karte](#ab-v130-update-über-die-sd-karte) erklärt es.
 > Die Flash-Tool-Anleitung darunter brauchst du nur beim allerersten Mal.
@@ -73,7 +73,7 @@ und ganz links das Häkchen setzen.
 | ✓ | `bootloader.bin` | `0x2000` |
 | ✓ | `partition-table.bin` | `0x8000` |
 | ✓ | `otadata.bin` | `0x11000` |
-| ✓ | `vedo_klartext_v1.3.6.bin` | `0x20000` |
+| ✓ | `vedo_klartext_v1.3.8.bin` | `0x20000` |
 
 > **Die vierte Zeile (`otadata.bin`) ist neu und beim Update von einer älteren
 > Version wichtig.** An dieser Stelle im Speicher lagen bisher Reste, mit denen
@@ -112,7 +112,7 @@ Einstellungen unten:
   (oder RST-Taste am Board drücken)
 - Das Display sollte jetzt mit der Intro-Animation starten
 - Im Boot-Screen und im Menü unten steht die Version –
-  dort kannst du prüfen, ob wirklich **v1.3.6** geflasht wurde
+  dort kannst du prüfen, ob wirklich **v1.3.8** geflasht wurde
 
 ### 7. Einmalig nach dem Update auf v1.3.x
 
@@ -134,7 +134,7 @@ nur um eine neue Firmware aufzuspielen, entfällt ab dieser Version.
 
 **So geht ein Update ab jetzt:**
 
-1. Im Release die Datei **`vedo_klartext_v1.3.6.bin`** herunterladen – die
+1. Im Release die Datei **`vedo_klartext_v1.3.8.bin`** herunterladen – die
    **mit** Versionsnummer im Namen. So siehst du der Karte später an, welcher
    Stand darauf liegt, ohne das Cluster einzuschalten.
 
