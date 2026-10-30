@@ -1,27 +1,50 @@
 # Das Bedien-Menü
 
-Übersicht über alle Menüpunkte der Firmware **v1.3.8 (Beta)**.
+Übersicht über alle Menüpunkte der Firmware **v1.4.0 (Beta)**.
 
 Bedient wird alles über den **Dreh-Encoder**.
 
 ---
 
-## Bedienung
+## Bedienung ohne Menü
+
+Seit v1.4.0 verstellst du die wichtigsten Anzeigen direkt am Encoder, ohne ins
+Menü zu gehen.
+
+| Eingabe | Wirkung |
+|---|---|
+| **Drehen** | Inhalt des aktiven Anzeigefelds weiterschalten. Standard ist auf Screen 1 das Mittel-LCD (MFA), auf Screen 3 der linke Werteblock |
+| **Kurz drücken** | Feldauswahl öffnen. Drehen wandert zwischen den Feldern, drücken bestätigt. Das gewählte Feld blinkt |
+| **Doppelklick** | Fertig – zurück aufs Standardfeld. Zeigt das Mittel-LCD den Tageskilometer, setzt der Doppelklick ihn auf 0 |
+| **Drücken + Drehen** | Screen wechseln |
+| **Lang drücken** | Menü öffnen (beim Loslassen) |
+
+- Nach 8 Sekunden ohne Eingabe springt die Auswahl von selbst aufs Standardfeld zurück.
+- Zeigt das Mittel-LCD eine **Warnung**, quittiert die nächste Eingabe sie zuerst.
+- Felder, die im Menü ausgeschaltet sind, lassen sich nicht anwählen.
+
+---
+
+## Bedienung im Menü
 
 | Eingabe | Wirkung |
 |---|---|
 | **Drehen** | Zeile wechseln |
 | **Kurz drücken** | Auswählen / Untermenü öffnen / Schalter umlegen |
+| **Doppelklick** | Nur bei Zeilen mit Doppelpfeil `»`: öffnet das Untermenü dahinter |
 | **Lang drücken** | Menü sofort komplett schließen |
 
 Bei Punkten mit mehreren Werten (z. B. Helligkeit) drückst du **einmal** –
 die Zeile wird **grün**. Jetzt änderst du mit dem Drehen den Wert. Noch einmal
 drücken übernimmt ihn.
 
-Passt eine Liste nicht komplett aufs Display, erscheint rechts eine
-**Bildlaufleiste**. Einfach weiterdrehen, die Liste schiebt sich mit.
+Die unterste Zeile ist immer **„Zurueck"**. Im Hauptmenü schließt sie das Menü,
+sonst geht es eine Ebene hoch – und zwar genau auf den Punkt, von dem du
+gekommen bist.
 
-Die unterste Zeile ist immer **„Zurueck"**. Im Hauptmenü schließt sie das Menü.
+Das Menü öffnet immer auf **Helligkeit**. Was man öfter braucht, steht in jeder
+Ebene oben. Nur die Sensoren-Liste ist länger als das Display – dort erscheint
+rechts eine **Bildlaufleiste**.
 
 ---
 
@@ -31,51 +54,50 @@ Die unterste Zeile ist immer **„Zurueck"**. Im Hauptmenü schließt sie das Me
 flowchart LR
     MAIN["<b>HAUPTMENÜ</b>"]
 
+    MAIN --> HEL["Helligkeit<br/><i>Doppelklick: Auto-Helligkeit</i>"]
     MAIN --> ANZ["<b>Anzeige</b>"]
-    MAIN --> HEL["Helligkeit"]
+    MAIN --> FZG["<b>Fahrzeug</b>"]
     MAIN --> SET["<b>Einstellungen</b>"]
 
-    ANZ --> A1["Elemente des Screens<br/>ein- / ausblenden"]
-    ANZ --> A2["Zeigerträgheit"]
-    ANZ --> A3["Needle Sweep"]
-    ANZ --> A4["Standby Uhr"]
+    ANZ --> A1["Speed · LCD links · MFA<br/>LCD rechts · Theme"]
+    ANZ --> ELE["<b>Elemente</b>"]
+    ANZ --> A2["Zeigerträgheit · Needle Sweep"]
+    ELE --> E0["Zeiger, Uhrzeit, Ladedruck …<br/>ein- / ausblenden"]
 
-    SET --> SEN["<b>Sensoren</b>"]
-    SET --> RPM["<b>RPM Kalibrierung</b>"]
+    FZG --> TAN["<b>Tank</b>"]
+    FZG --> REI["<b>Reifen</b>"]
+    FZG --> SEN["<b>Sensoren</b>"]
+    FZG --> RPM["<b>RPM Kalibrierung</b>"]
+    FZG --> TMP["<b>Tempomat</b>"]
+
     SET --> ZEI["<b>Zeit</b>"]
     SET --> LOG["<b>Datenlogger</b>"]
     SET --> ENE["<b>Energie</b>"]
     SET --> SYS["<b>System</b>"]
-    SET --> GNS["GNSS Modul"]
-    SET --> TAN["<b>Tank</b>"]
-    SET --> REI["<b>Reifen</b>"]
-    SET --> TMP["<b>Tempomat</b>"]
 
-    SEN --> S1["Welche Geber sind verbaut?<br/>11 Schalter + Auto-Anlernen"]
+    TAN --> T1["Auslitern · Kennlinie<br/>Tankgröße · Zurücksetzen"]
+    REI --> RE1["Breite · Querschnitt · Felge<br/>Offset · Impulse/Umdr · Umfang"]
     SEN --> KAL["<b>Kalibrierung</b>"]
+    SEN --> S1["Welche Geber sind verbaut?<br/>11 Schalter + Auto-Anlernen"]
     KAL --> K1["je Geber:<br/>R-Faktor · Offset · Ist-Wert<br/>Von SD laden · Vorlage auf SD"]
-
     RPM --> R1["<b>Preset wählen</b><br/>Motortyp"]
     RPM --> R2["Verfahren · Ref RPM<br/>Kalibrieren · Reset"]
-
-    ZEI --> Z1["UTC-Offset · Sommerzeit"]
-    LOG --> L1["Aufzeichnung · Intervall<br/>GPS-Track · Config sichern"]
-    ENE --> E1["Standby nach · Schlaf nach<br/>Tiefschlaf nach · Notweckung<br/>Tiefschlaf jetzt"]
-    TAN --> T1["Tankgröße · Kennlinie<br/>Auslitern · Zurücksetzen"]
-    REI --> RE1["Breite · Querschnitt · Felge<br/>Offset · Umfang"]
     TMP --> TM1["Signalausgang · Impulse/m<br/>Pulsform · Polarität<br/>Im Simulator · Frequenz"]
 
-    SYS --> Y1["FPS Anzeige · Run Demo<br/>Display kalibrieren<br/>Panel-Refresh"]
+    ZEI --> Z1["Sommerzeit · UTC-Offset"]
+    LOG --> L1["Aufzeichnung · Intervall<br/>GPS-Track · Config sichern"]
+    ENE --> E1["Standby nach · Schlaf nach<br/>Tiefschlaf nach · Notweckung<br/>Standby Uhr · Tiefschlaf jetzt"]
+    SYS --> Y1["Run Demo · Firmware<br/>Panel-Refresh · Display kalibrieren<br/>GNSS Modul · FPS Anzeige"]
     SYS --> STE["<b>Self-Test</b>"]
 
     classDef menu fill:#0d3a5c,stroke:#44AAFF,color:#ffffff
     classDef leaf fill:#00000000,stroke:#999999,color:#777777
-    class MAIN,ANZ,SET,SEN,RPM,ZEI,LOG,ENE,SYS,STE,KAL,TAN,REI,TMP menu
-    class HEL,A1,A2,A3,A4,S1,K1,R1,R2,Z1,L1,E1,T1,RE1,TM1,Y1,GNS leaf
+    class MAIN,ANZ,ELE,FZG,SET,TAN,REI,SEN,KAL,RPM,TMP,ZEI,LOG,ENE,SYS,STE menu
+    class HEL,A1,A2,E0,T1,RE1,S1,K1,R1,R2,TM1,Z1,L1,E1,Y1 leaf
 ```
 
-**Einstellungen** enthält bewusst nur Untermenüs. Alles, was ein Wert oder ein
-Schalter ist, sitzt eine Ebene tiefer.
+**Fahrzeug** fasst alles zusammen, was du einmal an dein Auto anpasst.
+**Einstellungen** betrifft das Gerät selbst. Beide enthalten nur Untermenüs.
 
 ---
 
@@ -83,82 +105,136 @@ Schalter ist, sitzt eine Ebene tiefer.
 
 | Punkt | Bedeutung |
 |---|---|
+| **Helligkeit** | 5 – 100 % (Stufen: 5, 10, 20, 30, 40, 60, 80, 100). Mit Auto-Helligkeit verstellst du hier die Tendenz (heller/dunkler). **Doppelklick** öffnet die Einstellungen der Auto-Helligkeit |
 | **Anzeige** | Was auf dem Display zu sehen ist |
-| **Helligkeit** | 5 – 100 % (Stufen: 5, 10, 20, 30, 40, 60, 80, 100) |
-| **Einstellungen** | Alles Weitere |
+| **Fahrzeug** | Anpassung an dein Auto |
+| **Einstellungen** | Das Gerät selbst |
 | **Zurueck** | Menü schließen |
 
 ---
 
 ## Anzeige
 
-Hier blendest du einzelne Elemente des Screens ein und aus, auf dem du gerade
-bist. **Die Liste ändert sich also je nach Screen.**
+Die Liste gehört zu dem Screen, auf dem du gerade bist. Oben stehen die Dinge,
+die man öfter umstellt – auf beiden Screens in derselben Reihenfolge.
 
-| Screen | Elemente, die du ein-/ausschalten kannst |
+| Punkt | Screen | Bedeutung |
+|---|---|---|
+| **Geschwindigkeit** / **Speed** | 1 / 3 | Woher die Geschwindigkeit kommt (Auswahl siehe unten) |
+| **LCD links** | 1 und 3 | Kurz drücken: Block **ein/aus**. **Doppelklick:** was in den beiden Zeilen steht |
+| **MFA** | 1 | Kurz drücken: Mittel-LCD **ein/aus**. **Doppelklick:** welche Inhalte beim Drehen vorkommen |
+| **LCD rechts** | 1 und 3 | wie LCD links |
+| **Theme** | 1 | Bildsatz für Screen 1, siehe [README](README.md#themes-auf-die-sd-karte) |
+| **Elemente** | 1 und 3 | Untermenü: einzelne Anzeigen ein- und ausblenden |
+| **Zeigerträgheit** | alle | Wie schnell die Zeiger einem Wert folgen: `Traege` · `Normal` · `Direkt` · `Snappy` |
+| **Needle Sweep** | alle | Der Begrüßungs-Zeigerlauf beim Einschalten |
+
+### LCD-Zeilen
+
+Jeder Werteblock hat zwei Zeilen (**Oben** / **Unten**). Jede Zeile zeigt einen
+Wert deiner Wahl:
+
+`Aus` · `Aussentemp` · `Wasser` · `Oeltemp` · `Oeldruck` · `Batterie` · `Ladeluft` · `Ladedruck`
+
+Ist eine Zeile aus, rückt die andere nach oben. Ohne Menü schaltest du die Zeile
+einfach per Drehen weiter – `Aus` gibt es nur hier im Menü.
+
+> Screen 1 und Screen 3 haben **eigene Einstellungen**. Was du auf Screen 1
+> wählst, gilt nicht automatisch auf Screen 3.
+
+### MFA (Mittel-LCD, nur Screen 1)
+
+Inhalte: `Tageskilometer` · `Bordspannung` · `Tankinhalt (Liter)` ·
+`Rad Geschwindigkeit` · `GPS Geschwindigkeit` · `GPS Hoehe` ·
+`Ladedruck Balken` · `Uhrzeit`
+
+Im Untermenü schaltest du ein, welche davon beim Drehen vorkommen. Einer bleibt
+immer an – wer die MFA ganz weg haben will, schaltet sie in **Anzeige** aus.
+
+> **Warnungen erscheinen auch bei ausgeschalteter MFA** im Mittel-LCD –
+> Öldruck & Co. sollen nicht unbemerkt bleiben.
+
+`Tankinhalt (Liter)` braucht eine ausgeliterte Tank-Kennlinie
+(**Fahrzeug → Tank → Auslitern**), sonst steht dort `---L`.
+
+### Geschwindigkeit
+
+| Screen | Auswahl |
 |---|---|
-| **Screen 1** | Drehzahl Zeiger · Geschwindigkeit · Temp links · Temp rechts · Uhrzeit · Ladedruck |
-| **Screen 3** | Drehzahl Zeiger · Drehzahl Bogen · Speed · Temp links · Temp rechts · Ladedruck · Ladeluft Temp · Tageskilometerzähler · Uhrzeit |
-
-> **Screen 2** ist ab v1.3.8 eine Drehzahl-Drehscheibe ohne eigene Menüpunkte.
-> Er erscheint nur, wenn seine Bilddateien auf der SD-Karte liegen. Ohne sie
-> geht der Zyklus wie bisher Screen 1 → Screen 3 → Debug.
-
-> **Kühlwasser- und Tankzeiger stehen nicht mehr in der Liste.** Sie sind
-> Pflichtanzeigen und werden immer angezeigt.
-
-Darunter stehen – auf jedem Screen gleich – diese drei Punkte:
-
-| Punkt | Bedeutung |
-|---|---|
-| **Zeigerträgheit** | Wie schnell die Zeiger einem Wert folgen:<br/>`Traege` · `Normal` · `Direkt` · `Snappy` |
-| **Needle Sweep** | Der Begrüßungs-Zeigerlauf beim Einschalten |
-| **Standby Uhr** | Springt sofort zum Uhren-Screen |
-
-### Mehrfachwerte auf Screen 1
-
-| Punkt | Auswahl |
-|---|---|
-| **Geschwindigkeit** | `Aus` · `Rad km/h` · `Rad km/h (b)` · `GPS km/h` · `Beide` |
-| **Temp links** | `Aus` · `Luft` (Außentemperatur) · `Wasser` · `Beide` |
-| **Temp rechts** | `Aus` · `Temp` (Öltemperatur) · `Druck` (Öldruck) · `Beide` |
+| **1** | `Aus` · `Rad km/h` · `Rad km/h (b)` · `GPS km/h` · `Beide` |
+| **3** | `Rad km/h` · `GPS km/h` · `Beide` · `Aus` |
 
 `Rad km/h (b)` blendet zusätzlich die dunklen Segmente hinter den Ziffern ein,
 wie bei einer echten Siebensegmentanzeige. Bei `Beide` steht groß das
 Radsignal und klein darüber der GPS-Wert.
 
-### Mehrfachwerte auf Screen 3
+### Anzeige → Elemente
 
-| Punkt | Auswahl |
+| Screen | Was du ein-/ausschalten kannst |
 |---|---|
-| **Drehzahl Bogen** | `Aus` · `Zeiger` (wandert mit) · `Voll` (fest auf 100 %) |
-| **Speed** | `Rad km/h` · `GPS km/h` · `Beide` · `Aus` |
-| **Temp links** | `Aus` · `Luft` (Außentemperatur) · `Wasser` · `Beide` |
-| **Temp rechts** | `Aus` · `Temp` (Öltemperatur) · `Druck` (Öldruck) · `Beide` |
+| **Screen 1** | Drehzahl Zeiger · Ladedruck · Uhrzeit |
+| **Screen 3** | Drehzahl Zeiger · Drehzahl Bogen · Ladedruck · Ladeluft Temp · Tageskilometerzähler · Uhrzeit |
 
-> **Die Werteblocks gibt es seit v1.3.5 auch hier**, mit **eigener Einstellung**:
-> Was du auf Screen 1 wählst, gilt nicht automatisch auf Screen 3. Das ist
-> Absicht – auf Screen 3 sitzt schon der Ladeluft-Block, da will man links und
-> rechts typischerweise anders belegen.
+**Drehzahl Bogen** (Screen 3) ist eine Auswahl: `Aus` · `Zeiger` (wandert mit) ·
+`Voll` (fest auf 100 %).
+
+> **Kühlwasser- und Tankzeiger stehen nicht in der Liste.** Sie sind
+> Pflichtanzeigen und werden immer angezeigt.
 
 ---
 
-## Einstellungen → Sensoren
+## Fahrzeug → Tank
+
+| Punkt | Bedeutung |
+|---|---|
+| **Auslitern** | Assistent: Tank in Schritten befüllen und die Werte aufnehmen |
+| **Kennlinie** | Kennlinie des Tankgebers von Hand einstellen |
+| **Tankgroesse** | Fassungsvermögen in Litern |
+| **Zuruecksetzen** | Kalibrierung verwerfen |
+
+---
+
+## Fahrzeug → Reifen
+
+Damit der Tacho stimmt, muss die Firmware den Abrollumfang kennen.
+
+| Punkt | Bedeutung |
+|---|---|
+| **Breite** | 155 – 305 mm |
+| **Querschnitt** | 30 – 85 % |
+| **Felge** | 13 – 20 Zoll |
+| **Offset** | Feintrimm −10,0 … +10,0 % |
+| **Impulse/Umdr** | 1 – 16. Wie viele Magnete pro Radumdrehung am Geber vorbeikommen |
+| **Umfang** | Nur Anzeige – rechnet beim Drehen live mit |
+
+Kontrollwert: **225/55 R16 → 2054 mm**.
+
+> **So findest du Impulse/Umdr:** im Debug-Screen die Rohfrequenz ablesen und
+> daneben die GPS-Geschwindigkeit. `Frequenz × 3600 ÷ km/h` ergibt die Impulse
+> pro Kilometer – der Sollwert steht im Protokoll gleich daneben. Kommt nur die
+> Hälfte heraus, sind es halb so viele Magnete wie eingestellt.
+
+> Wird die Umfang-Zeile **rot**, passt die Kombination nicht zusammen und die
+> Firmware rechnet ersatzweise mit dem Standardwert. Einfach zurückdrehen.
+
+**Nach dem Einstellen einmal gegen GPS gegenprüfen** und die Abweichung über
+`Offset` ausgleichen.
+
+---
+
+## Fahrzeug → Sensoren
 
 Hier sagst du der Firmware, **welche Geber bei dir tatsächlich verbaut sind**.
 Ein ausgeschalteter Geber wird nicht ausgewertet und erzeugt keine Warnung.
 
-Tank · Kühlwasser · Ladedruck · Ansaug vor LLK · Ansaug nach LLK · Öldruck ·
-Öldr.-Sch. 0,3 · Öldr.-Sch. 0,9 · Öltemperatur · Außentemperatur ·
-Radsensor (Hall)
-
 | Punkt | Bedeutung |
 |---|---|
-| **Oeldr.-Sch. ab** | Ab welcher Drehzahl der obere Öldruckschalter ausgewertet wird: `1500` · `1800` · `2000` · `2500`. VW verwendet je nach Modell 1500 oder 2000/min |
-| **Auto-Anlernen** | Die Firmware prüft selbst, welche Geber angeschlossen sind, und setzt die Schalter passend |
 | **Kalibrierung** | Untermenü, siehe unten |
-
-> Diese Liste ist länger als das Display – hier scrollt das Menü.
+| Kühlwasser · Öltemperatur · Ansaug vor LLK · Ansaug nach LLK · Außentemperatur | Temperatur-Geber verbaut ja/nein |
+| Ladedruck · Öldruck · Öldr.-Sch. 0,3 · Öldr.-Sch. 0,9 | Druck-Geber und -Schalter verbaut ja/nein |
+| **Oeldr.-Sch. ab** | Ab welcher Drehzahl der obere Öldruckschalter ausgewertet wird: `1500` · `1800` · `2000` · `2500`. VW verwendet je nach Modell 1500 oder 2000/min |
+| Tank · Radsensor (Hall) | Geber verbaut ja/nein |
+| **Auto-Anlernen** | Die Firmware prüft selbst, welche Geber angeschlossen sind, und setzt die Schalter passend |
 
 ### Sensoren → Kalibrierung
 
@@ -194,48 +270,7 @@ Darunter, für alle Geber zusammen:
 
 ---
 
-## Einstellungen → Reifen
-
-Damit der Tacho stimmt, muss die Firmware den Abrollumfang kennen.
-
-| Punkt | Bedeutung |
-|---|---|
-| **Breite** | 155 – 305 mm |
-| **Querschnitt** | 30 – 85 % |
-| **Felge** | 13 – 20 Zoll |
-| **Offset** | Feintrimm −10,0 … +10,0 % |
-| **Impulse/Umdr** | 1 – 16. Wie viele Magnete pro Radumdrehung am Geber vorbeikommen |
-| **Umfang** | Nur Anzeige – rechnet beim Drehen live mit |
-
-Kontrollwert: **225/55 R16 → 2054 mm**.
-
-> **Impulse/Umdr ist neu ab v1.3.5** und stand vorher fest in der Firmware.
-> Stimmt der Wert nicht, zeigt der Tacho um genau diesen Faktor falsch.
-> **So findest du ihn:** im Debug-Screen die Rohfrequenz ablesen und daneben die
-> GPS-Geschwindigkeit. `Frequenz × 3600 ÷ km/h` ergibt die Impulse pro
-> Kilometer – der Sollwert steht im Protokoll gleich daneben. Kommt nur die
-> Hälfte heraus, sind es halb so viele Magnete wie eingestellt.
-
-> Wird die Umfang-Zeile **rot**, passt die Kombination nicht zusammen und die
-> Firmware rechnet ersatzweise mit dem Standardwert. Einfach zurückdrehen.
-
-**Nach dem Einstellen einmal gegen GPS gegenprüfen** und die Abweichung über
-`Offset` ausgleichen.
-
----
-
-## Einstellungen → Tank
-
-| Punkt | Bedeutung |
-|---|---|
-| **Tankgroesse** | Fassungsvermögen in Litern |
-| **Kennlinie** | Kennlinie des Tankgebers |
-| **Auslitern** | Assistent: Tank in Schritten leerfahren und die Werte aufnehmen |
-| **Zuruecksetzen** | Kalibrierung verwerfen |
-
----
-
-## Einstellungen → RPM Kalibrierung
+## Fahrzeug → RPM Kalibrierung
 
 Damit die Drehzahl stimmt, muss die Firmware wissen, wie viele Impulse dein
 Motor pro Umdrehung liefert.
@@ -250,12 +285,34 @@ Motor pro Umdrehung liefert.
 
 ---
 
+## Fahrzeug → Tempomat
+
+Der Geschwindigkeits-Ausgang zum Steuergerät (VSS).
+
+| Punkt | Bedeutung |
+|---|---|
+| **Signalausgang** | Hauptschalter. Aus = am Ausgang passiert nichts |
+| **Impulse/m** | Kennwert des Steuergeräts: 1 · 2 · **4** · 6 · 8 · 16, zusätzlich als `/km` angezeigt |
+| **Pulsform** | Form des Signals: **50 %** · 25 % · 75 % · 1 ms · 2 ms. Ändert nur die Form, nicht die Frequenz |
+| **Polarität** | **Normal** / Invertiert: dreht das Signal um (im Stand High oder Low) |
+| **Im Simulator** | Darf die Demo den Ausgang treiben? Aus = am Schreibtisch bleibt er still |
+| **Frequenz** | Nur Anzeige: was **wirklich** am Ausgang anliegt. `---` = es geht nichts raus |
+
+> **Pulsform und Polarität sind zur Fehlersuche gedacht.** Standard bleibt
+> 50 % / Normal – nur ändern, wenn der Tempomat das Signal nicht annimmt.
+
+Einen Feintrimm gibt es hier bewusst nicht: die einzige verbleibende
+Fehlerquelle ist die Geschwindigkeitsberechnung, und die wird unter
+**Fahrzeug → Reifen → Offset** getrimmt.
+
+---
+
 ## Einstellungen → Zeit
 
 | Punkt | Bedeutung |
 |---|---|
-| **UTC-Offset** | Zeitzone (Deutschland Winter: `+1`) |
 | **Sommerzeit** | Eine Stunde dazu |
+| **UTC-Offset** | Zeitzone (Deutschland Winter: `+1`) |
 
 Die Uhrzeit selbst kommt vom GPS.
 
@@ -280,6 +337,7 @@ Die Uhrzeit selbst kommt vom GPS.
 | **Schlaf nach** | Nach dieser Zeit geht das Display aus (30 s bis 60 min, oder `Aus`) |
 | **Tiefschlaf nach** | Nach dieser Zeit im Schlaf geht das Gerät ganz aus (1 min bis 12 h, oder `Aus`). Ab Werk **Aus** |
 | **Notweckung** | Sicherheitstimer, der das Gerät aus dem Tiefschlaf zurückholt (`Aus` · 1 min · 5 min · 15 min · 1 h · 12 h). Ab Werk 1 min |
+| **Standby Uhr** | Springt sofort zur Standby-Uhr |
 | **Tiefschlaf jetzt** | Sofort in den Tiefschlaf |
 
 > Die Zeiten **addieren sich**: „Schlaf nach" zählt ab der letzten Bedienung,
@@ -291,53 +349,22 @@ Die Uhrzeit selbst kommt vom GPS.
 
 ---
 
-## Einstellungen → GNSS Modul
-
-Welches GPS-Modul verbaut ist: **LC76G** oder **SR1612U10** (u-blox M10).
-Die Wahl wird gespeichert und beim nächsten Start automatisch verwendet.
-
----
-
-## Einstellungen → Tempomat
-
-Der Geschwindigkeits-Ausgang zum Steuergerät (VSS).
-
-| Punkt | Bedeutung |
-|---|---|
-| **Signalausgang** | Hauptschalter. Aus = am Ausgang passiert nichts |
-| **Impulse/m** | Kennwert des Steuergeräts: 1 · 2 · **4** · 6 · 8 · 16, zusätzlich als `/km` angezeigt |
-| **Pulsform** | **Neu ab v1.3.6** – Form des Signals: **50 %** · 25 % · 75 % · 1 ms · 2 ms. Ändert nur die Form, nicht die Frequenz |
-| **Polarität** | **Neu ab v1.3.6** – **Normal** / Invertiert: dreht das Signal um (im Stand High oder Low) |
-| **Im Simulator** | Darf die Demo den Ausgang treiben? Aus = am Schreibtisch bleibt er still |
-| **Frequenz** | Nur Anzeige: was **wirklich** am Ausgang anliegt. `---` = es geht nichts raus |
-
-> **Pulsform und Polarität sind zur Fehlersuche gedacht.** Standard bleibt
-> 50 % / Normal – nur ändern, wenn der Tempomat das Signal nicht annimmt.
-
-Die Frequenzzeile ist der gemessene Wert, nicht der gerechnete – damit lässt
-sich der Ausgang ohne Messgerät prüfen.
-
-Einen Feintrimm gibt es hier bewusst nicht: die einzige verbleibende
-Fehlerquelle ist die Geschwindigkeitsberechnung, und die wird unter
-**Reifen → Offset** getrimmt.
-
----
-
 ## Einstellungen → System
 
 Werkzeuge für Diagnose und Service – im Alltag brauchst du die nicht.
 
 | Punkt | Bedeutung |
 |---|---|
-| **FPS Anzeige** | Blendet die Bildrate auf den Cluster-Screens ein (grün ab 20, gelb ab 10, darunter rot) |
 | **Run Demo** | Simulierte Fahrt, um die Anzeigen ohne laufenden Motor zu prüfen: `Aus` · `Stadt` · `Ueberland` · `Autobahn` · `Vollgas` |
+| **Firmware** | Sucht sofort auf der SD-Karte nach einer Firmware und spielt sie auf, ohne auf den nächsten Neustart zu warten. Auch derselbe Stand lässt sich damit noch einmal schreiben. Versionen vor 1.3.0 bleiben auch hier gesperrt |
 | **Self-Test** | Siehe unten |
-| **Display kalibrieren** | Bildlage des Displays einstellen |
 | **Panel-Refresh** | Treibt **Nachleuchten** (Image Sticking) aus dem Display, wenn ein Standbild sich eingebrannt hat |
-| **Firmware** | **Neu ab v1.3.5** – sucht sofort auf der SD-Karte nach einer Firmware und spielt sie auf, ohne auf den nächsten Neustart zu warten. Auch derselbe Stand lässt sich damit noch einmal schreiben. Versionen vor 1.3.0 bleiben auch hier gesperrt |
+| **Display kalibrieren** | Bildlage des Displays einstellen |
+| **GNSS Modul** | Welches GPS-Modul verbaut ist: **LC76G** oder **SR1612U10** (u-blox M10). Wirkt nach dem nächsten Neustart – bis dahin steht `NEUSTART` hinter der Zeile |
+| **FPS Anzeige** | Blendet die Bildrate auf den Cluster-Screens ein (grün ab 20, gelb ab 10, darunter rot) |
 
-> Der Zyklus lässt sich im laufenden Betrieb wechseln. Temperaturen, Tankinhalt
-> und Trip bleiben dabei stehen, es ändert sich nur das Fahrverhalten.
+> Der Demo-Zyklus lässt sich im laufenden Betrieb wechseln. Temperaturen,
+> Tankinhalt und Trip bleiben dabei stehen, es ändert sich nur das Fahrverhalten.
 > `Vollgas` ist ausdrücklich keine realistische Fahrt, sondern eine Vorführung.
 
 ### System → Self-Test

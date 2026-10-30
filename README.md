@@ -3,11 +3,16 @@
 Digitales Kombiinstrument für den VW T3.
 Firmware-Paket zum Flashen auf das ESP32-P4-Ultra Display-Board.
 
-**Version:** 1.3.8 (Beta) · **Stand:** 25.10.2026
+**Version:** 1.4.0 (Beta) · **Stand:** 30.10.2026
 
 ➡ **[Neueste Version herunterladen](https://github.com/HaenZ33/vedo-klartext/releases/latest)**
 
 Was in dieser Version neu ist, steht im [CHANGELOG.md](CHANGELOG.md).
+
+> **Neu ab v1.4.0: die Bedienung hat sich geändert.** Drehen am Encoder schaltet
+> jetzt den Inhalt der Anzeigefelder durch. **Screen wechseln = Encoder gedrückt
+> halten und dabei drehen.** Langer Druck öffnet wie bisher das Menü. Alles
+> Weitere steht in der [MENU.md](MENU.md).
 
 ## Was ist drin?
 
@@ -16,10 +21,11 @@ und liegen zusätzlich hier im Ordner.
 
 | Datei | Zweck |
 |---|---|
-| `vedo_klartext_v1.3.8.bin` | Die Firmware – **das ist die Datei für die SD-Karte** |
+| `vedo_klartext_v1.4.0.bin` | Die Firmware – **das ist die Datei für die SD-Karte** |
 | `bootloader.bin` | Startet den Chip – nur für den Weg über das Flash-Tool |
 | `partition-table.bin` | Sagt dem Chip, wo was im Speicher liegt – nur fürs Flash-Tool |
 | `otadata.bin` | Merkt sich, welche Firmware gestartet wird – nur fürs Flash-Tool |
+| `sd-karte_v1.4.0.zip` | **Nur am Release:** Themes für Screen 1 – optional, siehe [Themes auf die SD-Karte](#themes-auf-die-sd-karte) |
 | `README.md` | Diese Anleitung |
 | `MENU.md` | Übersicht über alle Menüpunkte und ihre Bedeutung |
 | `CHANGELOG.md` | Was sich von Version zu Version geändert hat |
@@ -29,7 +35,7 @@ mehr hier im Ordner – es ist 24 MB groß und ändert sich nie. Wer nur über d
 SD-Karte aktualisiert, braucht es ohnehin nicht.
 
 > **Der schnelle Weg:** Läuft auf deinem Cluster schon 1.3.0 oder neuer, brauchst
-> du von alldem **nur eine einzige Datei** – `vedo_klartext_v1.3.8.bin` auf die
+> du von alldem **nur eine einzige Datei** – `vedo_klartext_v1.4.0.bin` auf die
 > SD-Karte, Karte rein, Zündung an. Der Abschnitt
 > [Update über die SD-Karte](#ab-v130-update-über-die-sd-karte) erklärt es.
 > Die Flash-Tool-Anleitung darunter brauchst du nur beim allerersten Mal.
@@ -72,7 +78,7 @@ und ganz links das Häkchen setzen.
 | ✓ | `bootloader.bin` | `0x2000` |
 | ✓ | `partition-table.bin` | `0x8000` |
 | ✓ | `otadata.bin` | `0x11000` |
-| ✓ | `vedo_klartext_v1.3.8.bin` | `0x20000` |
+| ✓ | `vedo_klartext_v1.4.0.bin` | `0x20000` |
 
 > **Die vierte Zeile (`otadata.bin`) ist neu und beim Update von einer älteren
 > Version wichtig.** An dieser Stelle im Speicher lagen bisher Reste, mit denen
@@ -111,7 +117,7 @@ Einstellungen unten:
   (oder RST-Taste am Board drücken)
 - Das Display sollte jetzt mit der Intro-Animation starten
 - Im Boot-Screen und im Menü unten steht die Version –
-  dort kannst du prüfen, ob wirklich **v1.3.8** geflasht wurde
+  dort kannst du prüfen, ob wirklich **v1.4.0** geflasht wurde
 
 ### 7. Einmalig nach dem Update auf v1.3.x
 
@@ -133,7 +139,7 @@ nur um eine neue Firmware aufzuspielen, entfällt ab dieser Version.
 
 **So geht ein Update ab jetzt:**
 
-1. Im Release die Datei **`vedo_klartext_v1.3.8.bin`** herunterladen – die
+1. Im Release die Datei **`vedo_klartext_v1.4.0.bin`** herunterladen – die
    **mit** Versionsnummer im Namen. So siehst du der Karte später an, welcher
    Stand darauf liegt, ohne das Cluster einzuschalten.
 
@@ -219,6 +225,31 @@ zurück. Ein Update, das erfolgreich aussieht und sich später still selbst
 rückgängig macht, ist schlechter als eines, das gleich nein sagt.
 
 Wer wirklich auf 1.2.x oder älter zurück will, nimmt dafür das Flash-Tool.
+
+## Themes auf die SD-Karte
+
+Ab v1.4.0 kann Screen 1 einen anderen Bildsatz bekommen. Funktion und Anordnung
+bleiben gleich, nur das Aussehen ändert sich. Das ist **optional** – ohne Themes
+zeigt das Cluster sein eingebautes Aussehen.
+
+1. Im Release die Datei **`sd-karte_v1.4.0.zip`** herunterladen.
+2. Den Inhalt **direkt in den Hauptordner der SD-Karte** entpacken. Danach liegt
+   dort ein Ordner `themes` mit je einem Unterordner pro Theme. Eine
+   Firmware-Datei auf derselben Karte stört nicht.
+3. Karte ins Cluster, Zündung an.
+4. Auf Screen 1: **Menü → Anzeige → Theme**, kurz drücken, mit Drehen ein Theme
+   wählen, noch einmal drücken. Das neue Bild erscheint nach einem kurzen Moment.
+
+**Was du dabei wissen solltest:**
+
+- **Themes gehören zur Firmware-Version.** Nimm immer die ZIP aus demselben
+  Release wie deine Firmware. Ein Bild, das nicht zur laufenden Firmware passt,
+  wird nicht angezeigt – an seiner Stelle bleibt das eingebaute.
+- **Die Karte muss beim Einschalten stecken**, solange du ein Theme benutzt.
+  Fehlt sie, zeigt das Cluster das eingebaute Aussehen. Deine Wahl bleibt
+  gespeichert und gilt wieder, sobald die Karte steckt.
+- Beim Update auf eine neue Version den Ordner `themes` einfach durch den aus
+  der neuen ZIP ersetzen.
 
 ## Wenn etwas nicht klappt
 

@@ -5,6 +5,95 @@ Die aktuell installierte Version steht im Boot-Screen und unten im Menü.
 
 ---
 
+## v1.4.0 (Beta) – 30.10.2026
+
+**Die Bedienung ist neu.** Drehen am Encoder schaltet jetzt durch, was in den
+Anzeigefeldern steht – der Screenwechsel geht über **Drücken + Drehen**. Dazu
+kommen ein neues Mittel-LCD auf Screen 1, frei belegbare LCD-Zeilen, wechselbare
+Themes von der SD-Karte und ein aufgeräumtes Menü.
+
+> **Bitte zuerst lesen:** Wer bisher zum Screenwechsel einfach gedreht hat, landet
+> jetzt im Inhalt des Anzeigefelds. Screen wechseln = Encoder **gedrückt halten
+> und dabei drehen**. Die Übersicht steht unten unter „Bedienung".
+
+---
+
+### Bedienung
+
+| Eingabe | Was passiert |
+|---|---|
+| **Drehen** | Inhalt des aktiven Anzeigefelds weiterschalten (Screen 1: das Mittel-LCD, Screen 3: der linke Werteblock) |
+| **Kurz drücken** | Feldauswahl öffnen – drehen wandert zwischen den Feldern, drücken bestätigt. Das gewählte Feld blinkt |
+| **Doppelklick** | Fertig: zurück aufs Standardfeld. Zeigt das Mittel-LCD den Tageskilometer, setzt der Doppelklick ihn auf 0 |
+| **Drücken + Drehen** | Screen wechseln |
+| **Lang drücken** | Menü öffnen (beim Loslassen) |
+
+- Nach 8 Sekunden ohne Eingabe springt die Auswahl von selbst aufs Standardfeld zurück.
+- Was du per Drehen einstellst, merkt sich das Gerät nach etwa 2 Sekunden.
+
+### Neu
+
+**Mittel-LCD auf Screen 1 (MFA)**
+- Zeigt wahlweise: Tageskilometer, Bordspannung, Tankinhalt in Litern,
+  Geschwindigkeit (Rad oder GPS), GPS-Höhe, Ladedruck als Balken oder die Uhrzeit.
+- Durchschalten per Drehen. Welche Inhalte dabei vorkommen, legst du im Menü fest.
+- **Warnungen erscheinen jetzt hier**, bernsteinfarben hinterleuchtet: z. B.
+  `OELDRUCK`, `WASSER HEISS`, `LADEDR HOCH`, `TANK RESERVE`. Jede Encoder-Eingabe
+  quittiert sie für eine Weile. Öldruck bei laufendem Motor lässt sich nicht
+  wegdrücken. Die Warnleuchten bleiben wie gewohnt.
+
+**LCD-Zeilen frei belegbar (Screen 1 und Screen 3)**
+- Die beiden Werteblöcke links und rechts haben je zwei Zeilen, und jede Zeile
+  zeigt einen Wert deiner Wahl: Außentemperatur, Kühlwasser, Öltemperatur,
+  Öldruck, Bordspannung, Ladeluft oder Ladedruck.
+- Umstellen per Drehen oder im Menü. Deine bisherige Einstellung wird übernommen.
+- Auf Screen 1 sitzen die Blöcke jetzt in eigenen LCD-Fenstern mit den
+  typischen dunklen Segmenten im Hintergrund.
+
+**Themes für Screen 1**
+- Screen 1 kann einen anderen Bildsatz bekommen – Funktion und Anordnung bleiben
+  gleich, nur das Aussehen ändert sich.
+- Die Themes liegen im Release als `sd-karte_v1.4.0.zip`. Wie sie auf die Karte
+  kommen, steht in der
+  [README.md](https://github.com/HaenZ33/vedo-klartext/blob/v1.4.0/README.md#themes-auf-die-sd-karte).
+- Auswahl im Menü unter **Anzeige → Theme** (auf Screen 1). Ohne Karte bleibt
+  das eingebaute Aussehen.
+
+### Geändert
+
+**Das Menü ist neu sortiert – fürs Bedienen im Auto**
+- **Hauptmenü:** Helligkeit · Anzeige · **Fahrzeug** · Einstellungen. Das Menü
+  öffnet direkt auf **Helligkeit**.
+- **Fahrzeug** (neu) sammelt alles, was einmal ans Auto angepasst wird: Tank,
+  Reifen, Sensoren, RPM Kalibrierung, Tempomat.
+- **Einstellungen** enthält das Gerät selbst: Zeit, Datenlogger, Energie,
+  System. *GNSS Modul* ist nach *System* gewandert, *Standby Uhr* nach *Energie*.
+- **Anzeige** zeigt oben, was man öfter umstellt, auf beiden Screens in derselben
+  Reihenfolge. Die Ein/Aus-Schalter für Zeiger, Uhrzeit usw. liegen jetzt im
+  Untermenü **Elemente**.
+- **LCD links, LCD rechts und MFA** sind Schalter: kurz drücken blendet den ganzen
+  Block aus oder ein, **Doppelklick** öffnet die Auswahl der Inhalte.
+- **Zurück** landet jetzt auf dem Punkt, von dem du gekommen bist.
+- Keine der oberen Menüebenen muss mehr gescrollt werden.
+
+**Kleinigkeiten**
+- Die Warn-Hinterleuchtung glimmt beim Einschalten weich auf wie eine Glühbirne.
+- Eine Warnung flackert nicht mehr kurz weg, wenn der Wert an der Schwelle pendelt.
+
+### Hinweise
+
+- **Diese Version kommt normal über die SD-Karte.** Nimm
+  `vedo_klartext_v1.4.0.bin` – kommst du von **1.3.4 oder älter**, benenne sie
+  vorher in `vedo_klartext.bin` um. Der Ablauf steht in der
+  [README.md](https://github.com/HaenZ33/vedo-klartext/blob/v1.4.0/README.md).
+- **Alle Einstellungen und der Kilometerstand bleiben erhalten.** Auch die
+  Schalterstellungen im Menü werden beim ersten Start in die neue Ordnung
+  übernommen.
+- Die [MENU.md](https://github.com/HaenZ33/vedo-klartext/blob/v1.4.0/MENU.md)
+  ist auf diesen Stand nachgezogen.
+
+---
+
 ## v1.3.8 (Beta) – 25.10.2026
 
 **Die Ladedruck-Anzeige warnt nicht mehr zu früh.** Der Zeiger auf Screen 1
